@@ -1,0 +1,20 @@
+[project]
+name = "chapter-chopper"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Tommy Lees", email = "thomas.lees112@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "loguru>=0.7.2",
+    "pypdf>=5.1.0",
+]
+
+[project.scripts]
+chapter-chopper = "chapter_chopper:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

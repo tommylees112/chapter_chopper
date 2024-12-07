@@ -3,7 +3,7 @@ from pathlib import Path
 from loguru import logger
 from pypdf import PdfReader, PdfWriter
 
-from src.chapter_chopper.extract_toc import extract_toc
+from chapter_chopper.extract_toc import extract_toc
 
 
 def split_pdf_by_chapters(pdf_path: Path, output_dir: Path) -> None:

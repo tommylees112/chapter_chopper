@@ -9,7 +9,7 @@ Chapter Chopper takes your PDF books and intelligently splits them into separate
 ## 🚀 Installation
 
 ```bash
-?? pip install chapter-chopper ??
+uv run pipx install -e .
 ```
 
 ## 💡 Usage

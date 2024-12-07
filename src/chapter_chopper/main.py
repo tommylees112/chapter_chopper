@@ -4,7 +4,7 @@ from pathlib import Path
 
 from loguru import logger
 
-from src.chapter_chopper.split_to_chapters import split_pdf_by_chapters
+from chapter_chopper.split_to_chapters import split_pdf_by_chapters
 
 
 def default_download_dir() -> Path:
@@ -41,4 +41,5 @@ def main():
 
 
 if __name__ == "__main__":
+    main()
     main()

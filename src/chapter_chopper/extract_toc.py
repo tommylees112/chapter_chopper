@@ -22,8 +22,7 @@ def get_chapter_info(item: dict, reader: PdfReader) -> tuple[str, int]:
 
 def extract_toc(pdf_path: Path) -> list[tuple[str, int]]:
     """
-    Extracts the table of contents (TOC) from a PDF file.
-
+    Extracts the table of contents (TOC) from a PDF file using the PdfReader.
     Args:
         pdf_path (Path): The path to the PDF file.
 
@@ -41,6 +40,15 @@ def extract_toc(pdf_path: Path) -> list[tuple[str, int]]:
         - The TOC is expected to be in the form of a list of dictionaries or nested lists.
         - Each dictionary should contain a "/Title" key for the chapter title.
         - The page number is determined using the get_destination_page_number method of PdfReader.
+
+    Alternatives TODO:
+        - find another way to extract tuple of (title: str, start_of_chapter_page_num: int)
+        def looks_like_chapter_title() -> tuple[str, int]:
+            ...
+        - Text Pattern Analysis (regex: `re.finditer(pattern, text)`)
+        - Font/Style Analysis (`pdfreader.pages: page.extract_text_with_formatting()`)
+        - OCR Approach using `pytesseract` (`pytesseract.image_to_data(page_image, output_type=pytesseract.Output.DICT)`)
+
     """
     reader = PdfReader(pdf_path)
     toc = reader.outline

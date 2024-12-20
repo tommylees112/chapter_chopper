@@ -6,6 +6,12 @@ from pypdf import PdfReader, PdfWriter
 from chapter_chopper.extract_toc import extract_toc
 
 
+class NoChaptersFoundError(Exception):
+    """Raised when no chapters are found in the PDF's table of contents."""
+
+    pass
+
+
 def split_pdf_by_chapters(pdf_path: Path, output_dir: Path) -> None:
     """
     Splits a PDF file into separate chapters based on the table of contents (TOC).
@@ -30,6 +36,13 @@ def split_pdf_by_chapters(pdf_path: Path, output_dir: Path) -> None:
     # read the pdf document and get the chapters
     reader = PdfReader(pdf_path)
     chapters = extract_toc(pdf_path)
+
+    if not chapters:
+        raise NoChaptersFoundError(
+            "No chapters found in the PDF's table of contents. "
+            "Make sure the PDF has a valid table of contents."
+        )
+
     logger.info(f"{len(chapters)} Chapters: {chapters[:5]}")
 
     book_directory = output_dir / book_title
